@@ -1,37 +1,35 @@
-# Primer CSS Tooltips
+# Elm friendly Primer CSS Tooltips
 
-[![NPM version](http://img.shields.io/npm/v/primer-tooltips.svg)](https://www.npmjs.org/package/primer-tooltips)
-[![Build Status](https://travis-ci.org/primer/primer-tooltips.svg?branch=master)](https://travis-ci.org/primer/primer-tooltips)
+[![Build Status](https://travis-ci.org/ThinkAlexandria/elm-primer-tooltips.svg?branch=master)](https://travis-ci.org/ThinkAlexandria/elm-primer-tooltips)
 
 > Add tooltips built entirely in CSS to nearly any element. Just add a few classes and an aria-label attribute.
 
-This repository is a module of the full [primer-css][primer-css] repository.
+This repository is a port of
+[primer-tooltip](https://github.com/primer/primer-tooltip) to expose the CSS
+selectors as an Elm union type. This port may be useful if you have some sort
+of tool that takes advantage of the Elm AST to generate optimized CSS
+selectors.
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-tooltips` with this command.
+This repository is distributed with Git and elm-package. Install the elm bindings with this command.
 
 ```
-$ npm install --save primer-tooltips
+$ elm package install elm-primer-tooltips
 ```
 
 ## Usage
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `elm-stuff/packages/ThinkAlexandria/` directory and import it like this.
 
 ```scss
-@import "primer-tooltips/index.scss";
+@import "elm-primer-tooltips/1.0.0/index.scss";
 ```
 
 You can also import specific portions of the module by importing those partials from the `/lib/` folder. _Make sure you import any requirements along with the modules._
 
 ## Build
 
-For a compiled **css** version of this module, a npm script is included that will output a css version to `build/build.css` The built css file is also included in the npm package.
-
-```
-$ npm run build
-```
 
 ## Documentation
 
@@ -46,60 +44,60 @@ Add tooltips built entirely in CSS to nearly any element. Just add a few classes
 
 In addition, you'll want to specify a direction:
 
-- `.tooltipped-n`
-- `.tooltipped-ne`
-- `.tooltipped-e`
-- `.tooltipped-se`
-- `.tooltipped-s`
-- `.tooltipped-sw`
-- `.tooltipped-w`
-- `.tooltipped-nw`
+- `.ToolTippedN`
+- `.ToolTippedNE`
+- `.ToolTippedE`
+- `.ToolTippedSE`
+- `.ToolTippedS`
+- `.ToolTippedSW`
+- `.ToolTippedW`
+- `.ToolTippedNW`
 
 Tooltip classes will conflict with Octicon classes, and as such, must go on a parent element instead of the icon.
 
 ```html
-<span class="tooltipped tooltipped-n border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the North side.">
+<span class="ToolTipped ToolTippedN border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the North side.">
   Tooltip North
 </span>
-<span class="tooltipped tooltipped-ne border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the North East side.">
+<span class="ToolTipped ToolTippedNE border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the North East side.">
   Tooltip North East
 </span>
-<span class="tooltipped tooltipped-e border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the East side.">
+<span class="ToolTipped ToolTippedE border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the East side.">
   Tooltip East
 </span>
-<span class="tooltipped tooltipped-se border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the South East side.">
+<span class="ToolTipped ToolTippedSE border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the South East side.">
   Tooltip South East
 </span>
-<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the South side.">
+<span class="ToolTipped ToolTippedS border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the South side.">
   Tooltip South
 </span>
-<span class="tooltipped tooltipped-sw border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the South West side.">
+<span class="ToolTipped ToolTippedSW border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the South West side.">
   Tooltip South West
 </span>
-<span class="tooltipped tooltipped-w border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the West side.">
+<span class="ToolTipped ToolTippedW border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the West side.">
   Tooltip West
 </span>
-<span class="tooltipped tooltipped-nw border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the North West side.">
+<span class="ToolTipped ToolTippedNW border p-2 mb-2 mr-2 float-left" aria-label="This is the tooltip on the North West side.">
   Tooltip North West
 </span>
 ```
 
 #### Tooltips with multiple lines
-Use `.tooltipped-multiline` when you have long content. This style has some limitations: you cannot pre-format the text with newlines, and tooltips are limited to a max-width of `250px`.
+Use `.ToolTippedMultiline` when you have long content. This style has some limitations: you cannot pre-format the text with newlines, and tooltips are limited to a max-width of `250px`.
 
 
 ```html
-<span class="tooltipped tooltipped-multiline tooltipped-n border p-2" aria-label="This is the tooltip with multiple lines. This is the tooltip with multiple lines.">
+<span class="ToolTipped ToolTippedMultiline ToolTippedN border p-2" aria-label="This is the tooltip with multiple lines. This is the tooltip with multiple lines.">
   Tooltip with multiple lines
 </span>
 ```
 
 #### Tooltips No Delay
 
-By default the tooltips have a slight delay before appearing. This is to keep multiple tooltips in the UI from being distracting. There is a modifier class you can use to override this. `.tooltipped-no-delay`
+By default the tooltips have a slight delay before appearing. This is to keep multiple tooltips in the UI from being distracting. There is a modifier class you can use to override this. `.ToolTippedNoDelay`
 
 ```html
-<span class="tooltipped tooltipped-n tooltipped-no-delay border p-2" aria-label="This is the tooltip on the no delay side.">
+<span class="ToolTipped ToolTippedN ToolTippedNoDelay border p-2" aria-label="This is the tooltip on the no delay side.">
   Tooltip no delay
 </span>
 ```
@@ -108,7 +106,7 @@ By default the tooltips have a slight delay before appearing. This is to keep mu
 
 ## License
 
-[MIT](./LICENSE) &copy; [GitHub](https://github.com/)
+[MIT](./LICENSE) &copy; [GitHub](https://github.com/), &copy; Th!nk Inc.
 
 [primer-css]: https://github.com/primer/primer
 [docs]: http://primercss.io/
