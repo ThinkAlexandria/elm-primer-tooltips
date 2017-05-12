@@ -1,3 +1,6 @@
+# v1.0.0
+ * Introduce elm bindings
+
 # v0.5.4
 
  * Bump version and update changelog - Mu-An Chiou [github/github@8bed463](https://github.com/github/github/commit/8bed463)7ff6

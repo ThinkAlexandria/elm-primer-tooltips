@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "GitHub's primer-tooltip css selectors exposed as an Elm union type",
-    "repository": "https://github.com/user/project.git",
+    "repository": "https://github.com/ThinkAlexandria/elm-primer-tooltips.git",
     "license": "MIT",
     "source-directories": [
         "src/"

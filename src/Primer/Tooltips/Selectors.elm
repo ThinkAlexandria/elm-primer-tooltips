@@ -1,4 +1,4 @@
-module Tooltip.Css.Selectors exposing (CssClasses(..), CssIds(..), id, class, classList)
+module Primer.Tooltips.Selectors exposing (CssClasses(..), CssIds(..), class, classList)
 
 {-| This elm module provides strongly typed selectors for the elm port of
 GitHub's primer-css framework
@@ -13,9 +13,11 @@ class name =
     Html.Attributes.class <| toString name
 
 
-classList : List CssClasses -> Html.Attribute msg
+classList : List (CssClasses, Bool) -> Html.Attribute msg
 classList names =
-    Html.Attributes.class <| String.join " " <| List.map toString names
+    names
+        |> List.map ((c,b) -> (toString c, b))
+        |> Html.Attributes.classList
 
 
 type CssClasses
