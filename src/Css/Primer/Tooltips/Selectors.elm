@@ -1,42 +1,28 @@
-module Css.Primer.Tooltips.Selectors exposing (CssClasses(..), class, classList)
+module Css.Primer.Tooltips.Selectors exposing (class, classList)
 
 {-| This elm module provides strongly typed selectors for the elm port of
 GitHub's primer-css framework
 
-@docs CssClasses, class, classList
+@docs class, classList
+
 -}
 
-import Html.Attributes
+import Css.Primer.Tooltips.Selectors.Classes as Classes exposing (CssClasses)
 import Html
+import Html.Attributes
 
 
 {-| Helper lets you keep type checking of selectors all the way to call site.
 -}
 class : CssClasses -> Html.Attribute msg
 class =
-    toString >> Html.Attributes.class
+    Classes.toString >> Html.Attributes.class
 
 
 {-| Helper lets you keep type checking of selectors all the way to call site.
 -}
-classList : List (CssClasses, Bool) -> Html.Attribute msg
+classList : List ( CssClasses, Bool ) -> Html.Attribute msg
 classList names =
     names
-        |> List.map (\(c,b) -> (toString c, b))
+        |> List.map (\( c, b ) -> ( Classes.toString c, b ))
         |> Html.Attributes.classList
-
-{-| The 12 CSS classes exposed by the SASS implementation.
--}
-type CssClasses
-    = ToolTipped
-    | ToolTippedMultiline
-    | ToolTippedNoDelay
-    | ToolTippedSticky
-    | ToolTippedN
-    | ToolTippedS
-    | ToolTippedE
-    | ToolTippedW
-    | ToolTippedNE
-    | ToolTippedNW
-    | ToolTippedSE
-    | ToolTippedSW
